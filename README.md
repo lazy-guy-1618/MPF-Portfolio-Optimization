@@ -9,7 +9,7 @@ _A practical study based on portfolio management using convex optimisation._
 
 ---
 
-## 🚀 Overview
+## Overview
 
 This repository explores **portfolio construction as a convex optimisation problem**, balancing two competing objectives:
 
@@ -22,7 +22,7 @@ For a deeper discussion, see the [📄 full report](./Convex_Optimization.pdf) a
 
 ---
 
-## ✨ Key Ideas
+## Key Ideas
 
 - **Statistical measures**: expected return, variance/standard deviation, and **Sharpe ratio**.
 - **Convex formulations**:
@@ -33,7 +33,7 @@ For a deeper discussion, see the [📄 full report](./Convex_Optimization.pdf) a
 
 ---
 
-## 📦 Data
+## Data
 
 - Historical daily prices for **15 assets** (2000–2021), adapted from a larger Kaggle dataset.
 - **Pre-processing**:
@@ -45,7 +45,7 @@ For a deeper discussion, see the [📄 full report](./Convex_Optimization.pdf) a
 
 ---
 
-## 🧮 Optimisation Problems
+## Optimisation Problems
 
 Let:
 - \(w \in \mathbb{R}^n\): portfolio weights (non-negative, sum to 1)
@@ -74,7 +74,7 @@ Let:
 
 ---
 
-## 🛠️ Environment & Installation
+## Environment & Installation
 
 You can either use the repo’s `requirements.txt` (if present) or install the essentials directly:
 
