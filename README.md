@@ -5,7 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 ![Frontier](https://img.shields.io/badge/efficient_frontier-Pareto--optimal-9cf)
 
-A compact, reproducible project that formulates **portfolio construction as convex programs**—balancing return and risk with QP/QCQP—implemented in Python with CVXPY. Designed to be skim-friendly for recruiters and technically useful for replication.
+A compact, reproducible project that formulates **portfolio construction as convex programs**—balancing return and risk with QP/QCQP—implemented in Python with CVXPY. Designed to be technically useful for replication.
 
 ---
 
