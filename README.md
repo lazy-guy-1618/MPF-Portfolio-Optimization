@@ -54,6 +54,11 @@ ax = plot_efficient_frontier(frontier)
 plt.savefig("figs/efficient_frontier.png", dpi=200, bbox_inches="tight")
 ```
 
+![Efficient Frontier (Pareto-optimal set)](figs/efficient_frontier.png)
+
+![Strategy Comparison](figs/strategy_comparison.png)
+
+
 ---
 
 ## Dataset (summary)
