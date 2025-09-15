@@ -1,0 +1,28 @@
+# --- Python template (core) ---
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+.env
+.env.*
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+
+# --- OS junk ---
+.DS_Store
+Thumbs.db
+
+# --- Project-specific ---
+# Keep the folder but ignore raw data
+data/*
+!data/.gitkeep
+!data/README.md
+
+# Figures should be committed so README images render
+# (no ignore for figs/)
