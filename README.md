@@ -3,8 +3,9 @@
 [![CVXPY](https://img.shields.io/badge/CVXPY-1.x-orange.svg)](https://www.cvxpy.org/)
 [![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-lightgrey.svg)](https://jupyter.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+![Frontier](https://img.shields.io/badge/efficient_frontier-Pareto--optimal-9cf)
 
-A compact, reproducible project that formulates **portfolio construction as convex programs**—balancing return and risk with QP/QCQP—implemented in Python with CVXPY. Designed to be technically useful for replication.
+A compact, reproducible project that formulates **portfolio construction as convex programs**—balancing return and risk with QP/QCQP—implemented in Python with CVXPY. Designed to be skim-friendly for recruiters and technically useful for replication.
 
 ---
 
@@ -13,10 +14,7 @@ A compact, reproducible project that formulates **portfolio construction as conv
 - **Slides:** `Convex Optimisation.pptx` – talk-track version of the project.  
 - **Notebook:** `convex-optimization.ipynb` – runnable code for data prep, optimization, and plots.
 
-> Course project: *Convex Optimisation (MA60213), IIT Kharagpur* //
-> Authors: Mihir Mallick (21CS30031), // 
-  Aatir Zaki (21CH10092) //
-> — Supervisor: Prof. Swanand Khare. Submitted **Nov 14, 2024**.
+> Course project: *Convex Optimisation (MA60213), IIT Kharagpur* — Mihir Mallick (21CS30031), Aatir Zaki (21CH10092) — Supervisor: Prof. Swanand Khare. Submitted **Nov 14, 2024**.
 
 ---
 
@@ -24,9 +22,37 @@ A compact, reproducible project that formulates **portfolio construction as conv
 - **Method**: Two convex formulations  
   1) **Maximize expected return** s.t. variance ≤ σ²_max (**QCQP**)  
   2) **Minimize variance** s.t. expected return ≥ r_min (**QP**)
+- **We also derive & visualize the** **efficient (Pareto) frontier** from these formulations.
 - **Stack**: `python`, `numpy`, `pandas`, `cvxpy`, `matplotlib`.
-- **Outcomes**: Efficient-frontier style analysis; optimal allocation and **risk ≈ 4.456%** for the selected setup; comparison vs equal-weight and concentrated strategies.
-- **Takeaways**: Clear trade-offs; caveats on variance as a risk proxy and on using historical returns (MPT caveats).
+- **Outcomes**: Efficient-frontier analysis; optimal allocation and **risk ≈ 4.456%**; comparison vs equal-weight and concentrated strategies.
+- **Takeaways**: Clear trade-offs; standard MPT caveats (variance as risk, historical estimation).
+
+---
+
+## Efficient (Pareto) Frontier
+The **efficient frontier** is the set of Pareto-optimal portfolios: for a given risk, no other portfolio offers higher expected return, and for a given expected return, none has lower risk.
+
+We generate it by sweeping a return floor and solving the **min-variance QP** repeatedly:
+
+```python
+# In a Python shell or a cell, once data is loaded:
+from src.data import load_prices, impute_prices, to_returns, mean_cov
+from src.optimize import efficient_frontier
+from src.plots import plot_efficient_frontier
+import matplotlib.pyplot as plt
+
+# Example with the taken CSV:
+# prices = load_prices("data/prices.csv", date_col="Date")
+# prices = impute_prices(prices, k=5)
+# rets = to_returns(prices)
+# mu, S = mean_cov(rets)
+
+# For a quick demo without data, you can still run the notebook.
+
+frontier = efficient_frontier(mu, S, n_pts=50)
+ax = plot_efficient_frontier(frontier)
+plt.savefig("figs/efficient_frontier.png", dpi=200, bbox_inches="tight")
+```
 
 ---
 
@@ -75,6 +101,12 @@ A compact, reproducible project that formulates **portfolio construction as conv
            w=solve_min_variance(mu,S,r_min=mu.mean()); print('weights=',w)"
    ```
 
+
+
+## References & links
+- Report & slides in this repo.
+- Boyd & Vandenberghe, Convex Optimization (2004).
+- Markowitz, Portfolio Selection (1952).
 
 
 
