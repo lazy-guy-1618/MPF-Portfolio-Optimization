@@ -76,6 +76,49 @@ plt.savefig("figs/efficient_frontier.png", dpi=200, bbox_inches="tight")
 > Note: This is a pedagogy/demo project—not investment advice.
 
 ---
+### Data access (Kaggle)
+
+This project uses daily close prices from the Kaggle dataset **“NIFTY50 stock market data”** by **rohanrao**.  
+We do **not** commit raw data to the repo.
+
+**Manual download**
+1. Download from Kaggle: https://www.kaggle.com/datasets/rohanrao/nifty50-stock-market-data
+2. Place the per-stock CSVs under: `data/raw/nifty50/`
+
+**Kaggle API (optional)**
+```bash
+pip install kaggle
+# Save your API token as kaggle.json and place it at:
+#   Linux/macOS: ~/.kaggle/kaggle.json
+#   Windows:    %USERPROFILE%\.kaggle\kaggle.json
+kaggle datasets download rohanrao/nifty50-stock-market-data -p data/raw/nifty50 --unzip
+```
+
+Build the processed file:
+```bash
+# all tickers
+python scripts/build_prices.py --src data/raw/nifty50 --out data/prices_wide.csv.gz
+
+# or restrict to a 15-asset set and date window (smaller file)
+python scripts/build_prices.py \
+  --src data/raw/nifty50 \
+  --tickers "HDFCBANK,TCS,INFY,RELIANCE,ICICIBANK,KOTAKBANK,HINDUNILVR,ITC,LT,BAJFINANCE,ASIANPAINT,MARUTI,SBIN,BHARTIARTL,ULTRACEMCO" \
+  --start 2010-01-01 --end 2021-12-31 \
+  --out data/prices_wide.csv.gz
+
+```
+
+Load in code:
+```Python
+import pandas as pd
+prices = (pd.read_csv("data/prices_wide.csv.gz", compression="infer", parse_dates=["Date"])
+            .set_index("Date").sort_index())
+```
+
+
+
+
+---
 
 ## Results (high-level)
 - **Optimal risk ≈ 4.456%** under the chosen constraints.  
