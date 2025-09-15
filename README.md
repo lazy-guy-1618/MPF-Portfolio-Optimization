@@ -14,7 +14,12 @@ A compact, reproducible project that formulates **portfolio construction as conv
 - **Slides:** `Convex Optimisation.pptx` – talk-track version of the project.  
 - **Notebook:** `convex-optimization.ipynb` – runnable code for data prep, optimization, and plots.
 
-> Course project: *Convex Optimisation (MA60213), IIT Kharagpur* — Mihir Mallick (21CS30031), Aatir Zaki (21CH10092) — Supervisor: Prof. Swanand Khare. Submitted **Nov 14, 2024**.
+> **Course project:** *Convex Optimisation (MA60213)*<br>
+> **Institution:** IIT Kharagpur<br>
+> **Authors:** Mihir Mallick (21CS30031), Aatir Zaki (21CH10092)<br>
+> **Supervisor:** Prof. Swanand Khare<br>
+> **Submitted:** Nov 14, 2024
+
 
 ---
 
