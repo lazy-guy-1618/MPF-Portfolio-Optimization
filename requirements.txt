@@ -1,9 +1,6 @@
-
-```txt
 numpy
 pandas
 cvxpy
 matplotlib
 scipy
 jupyter
-
